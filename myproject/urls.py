@@ -15,6 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 
 # from rest_framework_swagger.views import get_swagger_view
 
@@ -23,11 +24,14 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    # path('api-doc/', schema_view),
     path('', include('languages.urls')),
+    path('api-auth/', include('rest_framework.urls')),
+    path('api/token/', TokenObtainPairView.as_view()),
+    path('api/token/refresh/', TokenRefreshView.as_view()),
+    # path('api-doc/', schema_view),
     # path('o/', include('oauth2_provider.urls', namespace='oauth2_provider')),
     # path('users/', UserList.as_view()),
     # path('users/<pk>/', UserDetails.as_view()),
     # path('groups/', GroupList.as_view()),
-    path('api-auth/', include('rest_framework.urls')),
+
 ]

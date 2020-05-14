@@ -1,4 +1,3 @@
-from django.shortcuts import render
 from rest_framework import viewsets, permissions
 from .models import Language, Programmer, Paradigm
 from .serializers import LanguageSerializer, ParadigmSerializer, ProgrammerSerializer
